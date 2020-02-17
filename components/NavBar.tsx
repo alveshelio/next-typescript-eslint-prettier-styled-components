@@ -2,19 +2,13 @@ import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 
-const links = [
-  {href: 'https://zeit.co/now', label: 'ZEIT'},
-  {href: 'https://github.com/zeit/next.js', label: 'GitHub'},
-].map(link => ({
-  ...link,
-  key: `nav-link-${link.href}-${link.label}`,
-}))
-
 const Nav = styled.nav`
   display: flex;
   justify-content: center;
   flex-direction: column;
 `
+
+const NavInner = styled.div``;
 
 const NabBarCollapsible = styled.div``;
 const NavBarNav = styled.ul`
@@ -31,14 +25,16 @@ const NavLink = styled(Link)`
   text-decoration: none;
 `
 
+const ToggleButton = styled.button``;
+
 const NavBar = () => (
-  <Nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div className="container">
-      <NavLink href="#">Start Bootstrap</NavLink>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+  <Nav>
+    <NavInner>
+      <NavLink href="#" as="a">Start Bootstrap</NavLink>
+      <ToggleButton type="button" data-toggle="collapse" data-target="#navbarResponsive"
               aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"/>
-      </button>
+      </ToggleButton>
       <NabBarCollapsible id="navbarResponsive">
         <NavBarNav className="navbar-nav ml-auto">
           <NavItem className="nav-item active">
@@ -55,7 +51,7 @@ const NavBar = () => (
           </NavItem>
         </NavBarNav>
       </NabBarCollapsible>
-    </div>
+    </NavInner>
   </Nav>
 )
 
